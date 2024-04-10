@@ -67,14 +67,6 @@ def main():
             print("Creating nmaplogs directory...")
             try:
                 os.system("mkdir nmaplogs")
-                for count, command in enumerate(commandQueue):
-                    os.chdir("nmaplogs")
-                    try:
-                        subprocess.Popen(command, stdout=open("nmap_{}".format(count + 1), "w"))
-                    except Exception as e:
-                        print("[Malformed nmap command/process error] Error: %s" % e)
-                        print("Skipping...")
-                        pass
             except Exception as e:
                 print("[Likely a directory creation error] Error: %s" % e)
                 print("Run in terminal instead? (y/n)")
@@ -84,6 +76,15 @@ def main():
                 else:
                     print("Exiting...")
                     sys.exit()
+        for count, command in enumerate(commandQueue):
+            os.chdir("nmaplogs")
+            try:
+                subprocess.Popen(command, stdout=open("nmap_{}".format(count + 1), "w"))
+            except Exception as e:
+                print("[Malformed nmap command/process error] Error: %s" % e)
+                print("Skipping...")
+                continue
+            
 
     except KeyboardInterrupt:
         print("Exiting...")
