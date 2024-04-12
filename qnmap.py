@@ -99,7 +99,7 @@ def validate_ip(ip):
     
 #Command builder
 def commandBuilder() :
-    argList = ["-sU", "-sV", "-sS", "-sT", "-sA", "-sF", "-O", "-A", "-T", "-Pn","--script="]
+    argList = ["-sU", "-sV", "-sS", "-sT", "-sA", "-sF", "-O", "-A", "-T", "-Pn","-sn","--script="]
     argChoice = []
     scriptList = []
     port_selection = "-p 0-1000"
@@ -126,20 +126,30 @@ def commandBuilder() :
                     if userChoice == "-sS":
                         argList.remove("-sS")
                         argList.remove("-sT")
+                        argList.remove("-sn")
                     elif userChoice == "-sT":
                         argList.remove("-sS")
                         argList.remove("-sT")
+                        argList.remove("-sn")
                     elif userChoice == "-sU":
                         argList.remove("-sU")
                         argList.remove("-sF")
+                        argList.remove("-sn")
                     elif userChoice == "-sF":
                         argList.remove("-sU")
                         argList.remove("-sF")
                         argList.remove("-sA")
+                        argList.remove("-sn")
                     elif userChoice == "-sA":
                         argList.remove("-sA")
                         argList.remove("-sF")
                         argList.remove("-sU")
+                        argList.remove("-sn")
+                    elif userChoice == "-sn":
+                        argList.remove("-sn")
+                        argList.remove("-sU")
+                        argList.remove("-sF")
+                        argList.remove("-sA")
                     else:
                         argList.remove(userChoice)
                 else:
