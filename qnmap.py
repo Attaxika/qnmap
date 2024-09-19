@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # qnmap.py
 # Description: Simple script to automate NMAP scanning
 # Author: Attaxika
